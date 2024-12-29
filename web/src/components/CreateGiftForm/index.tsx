@@ -275,7 +275,6 @@ export function CreateGiftForm() {
     <div className="flex flex-col gap-4 px-4">
       <InputUSDC />
       <InputSecret />
-      <InputResolution />
       <BaseNameSelector baseNameNfts={baseNameNfts} />
       {/* <Transaction calls={calls} isSponsored>
         <TransactionButton
