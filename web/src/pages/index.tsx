@@ -1,63 +1,97 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import Image from "next/image";
-
+import { GiftHomeAnimation } from "~/components/GiftHomeAnimation";
+import { Button } from "~/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "~/components/ui/dialog";
+import { Input } from "~/components/ui/input";
+import { Label } from "~/components/ui/label";
 export default function Home() {
-  const router = useRouter();
-
   return (
     <>
-      <Image 
-        src="/images/logo.png" 
-        alt="Logo" 
-        width={72} 
-        height={72} 
-        priority 
-        className="mb-4"
-      />
-      <h1 className="text-2xl font-bold mb-4 text-center">Onchain Gift Pack</h1>
-      <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch max-w-4xl mx-auto">
-        <div className="w-full md:w-1/2 p-6 border border-gray-200 rounded-lg flex flex-col items-center gap-4">
-          <h2 className="text-xl font-semibold">Claim a Gift</h2>
-          <p className="text-gray-600 text-center">Enter the secret message to claim your gift</p>
-          <form 
-            className="w-full max-w-sm"
-            onSubmit={(e) => {
-              e.preventDefault();
-              const form = e.target as HTMLFormElement;
-              const password = new FormData(form).get("password") as string;
-              if (password) {
-                void router.push(`/claim/${password}`);
-              }
-            }}
-          >
-            <input
-              type="text"
-              name="password"
-              placeholder="Enter secret message..."
-              className="w-full p-2 border border-gray-300 rounded-md"
-              required
-            />
-            <button
-              type="submit"
-              className="w-full mt-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
+      <div className="flex h-[80vh] flex-col items-center justify-center">
+        <GiftHomeAnimation />
+        <h1 style={{ fontFamily: "Inter", fontWeight: "800" }} className="-mt-10 w-[80%] text-center text-[72px] font-extrabold leading-tight text-white md:text-[80px]">
+          Bring Them <span className="text-blue-500">Onchain</span> This New
+          Year!
+        </h1>
+        <div className="my-5 flex items-center justify-center gap-4">
+          <ClaimPasswordInputDialog />
+          <Link href="/create">
+            <Button
+              size={"lg"}
+              className={`flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-base font-bold text-white hover:bg-blue-700 md:w-[160px]`}
+              variant="default"
             >
-              Claim Gift
-            </button>
-          </form>
-        </div>
-
-        <div className="w-full md:w-1/2 p-6 border border-gray-200 rounded-lg flex flex-col items-center gap-4">
-          <h2 className="text-xl font-semibold">Create a Gift</h2>
-          <p className="text-gray-600 text-center">Create a gift pack to send to someone special</p>
-          <Link
-            href="/create"
-            className="w-full max-w-sm bg-blue-600 text-white text-center py-2 px-4 rounded-md hover:bg-blue-700 transition-colors mt-auto"
-          >
-            Create Gift Pack
+              Create a Gift
+            </Button>
           </Link>
         </div>
       </div>
     </>
+  );
+}
+
+export function ClaimPasswordInputDialog() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button
+          size={"lg"}
+          className="bg-white/20 font-sans text-base text-white hover:bg-white/10 hover:text-white md:w-[160px]"
+          variant="outline"
+        >
+          Claim a Gift
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <form
+          className="w-full max-w-sm"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const form = e.target as HTMLFormElement;
+            const password = new FormData(form).get("password") as string;
+            if (password) {
+              void router.push(`/claim/${password}`);
+            }
+          }}
+        >
+          <DialogHeader>
+            <DialogTitle>Claim a Gift</DialogTitle>
+            <DialogDescription>
+              Enter the password to claim your gift
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="password" className="text-right">
+                Password
+              </Label>
+              <Input
+                id="password"
+                name="password"
+                className="col-span-3"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button
+              className={`flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700`}
+              type="submit"
+            >
+              Save changes
+            </Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 }
