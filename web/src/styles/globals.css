@@ -33,10 +33,7 @@
 
 
 body {
-  font-family: 'Segment', sans-serif;
-  h1 {
-    font-family: 'Coinbase Sans';
-  }
+  font-family: 'Coinbase Sans', sans-serif;
 }
 
 /* remove up and down arrows from number inputs */
