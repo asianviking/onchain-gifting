@@ -26,10 +26,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <div className="flex h-20 w-full items-center justify-between">
         <Link href="/">
           <Image
-            src="/images/base-logo.png"
+            src="/images/base-logo-hat.png"
             alt="Logo"
-            width={32}
-            height={32}
+            width={72}
+            height={72}
             priority
           />
         </Link>
