@@ -48,7 +48,7 @@ export function InputSecret() {
   }, [debouncedPassword, updatePassword]);
   return (
     <div className="flex flex-col gap-2">
-      <Label>Secret Words</Label>
+      <Label>New Year&apos;s Resolution</Label>
       <Input
         type="text"
         onChange={(e) => setPassword(e.target.value)}
@@ -63,7 +63,7 @@ export function InputSecret() {
           }
         }}
         className="flex w-full items-center gap-x-3 rounded-lg bg-white p-3"
-        placeholder="The secret word use to claim this gift"
+        placeholder="My new year's resolution for 2025 is..."
       />
       {showError && (
         <p className="mt-1 text-sm text-red-500 opacity-90">{errorMessage}</p>
