@@ -4,8 +4,8 @@ import {
   Name,
   Identity,
   EthBalance,
-} from '@coinbase/onchainkit/identity';
-import { color } from '@coinbase/onchainkit/theme';
+} from "@coinbase/onchainkit/identity";
+import { color } from "@coinbase/onchainkit/theme";
 import {
   ConnectWallet,
   ConnectWalletText,
@@ -15,27 +15,33 @@ import {
   WalletDropdownDisconnect,
   WalletDropdownFundLink,
   WalletDropdownLink,
-} from '@coinbase/onchainkit/wallet';
-import { createWallet, createWalletAdapter, type Wallet as ThirdwebWallet } from "thirdweb/wallets";
+} from "@coinbase/onchainkit/wallet";
 import {
-  ConnectButton,
-  useSetActiveWallet
-} from "thirdweb/react";
-import { useAccount, useDisconnect, useWalletClient, useSwitchChain } from "wagmi";
+  createWallet,
+  createWalletAdapter,
+  type Wallet as ThirdwebWallet,
+} from "thirdweb/wallets";
+import { ConnectButton, useSetActiveWallet } from "thirdweb/react";
+import {
+  useAccount,
+  useDisconnect,
+  useWalletClient,
+  useSwitchChain,
+} from "wagmi";
 import { viemAdapter } from "thirdweb/adapters/viem";
-import { useEffect } from 'react';
-import { defineChain } from 'thirdweb/chains';
-import { CHAIN, CLIENT, WAGMI_CHAIN } from '~/constants';
-import Image from 'next/image';
+import { useEffect } from "react";
+import { defineChain } from "thirdweb/chains";
+import { CHAIN, CLIENT, WAGMI_CHAIN } from "~/constants";
+import Image from "next/image";
 import { useConnect } from "wagmi";
-import { viemClientWalletConnector } from './ViemClientWalletConnector';
+import { viemClientWalletConnector } from "./ViemClientWalletConnector";
 
 const SHOW_THIRDWEB_WALLET = true;
 
 type Props = {
   btnClassName?: string;
   hideText?: boolean;
-}
+};
 
 export function WalletComponents({ btnClassName, hideText }: Props) {
   const { isConnected } = useAccount();
@@ -45,7 +51,9 @@ export function WalletComponents({ btnClassName, hideText }: Props) {
   const { connectAsync } = useConnect();
   const setActiveWallet = useSetActiveWallet();
 
-  const connectButtonColor = isConnected ? "bg-gray-200" : "bg-blue-600 hover:bg-blue-700";
+  const connectButtonColor = isConnected
+    ? "bg-gray-200"
+    : "bg-blue-600 hover:bg-blue-700";
   const connectButtonTextSize = isConnected ? "text-md" : "text-lg";
 
   useEffect(() => {
@@ -83,36 +91,30 @@ export function WalletComponents({ btnClassName, hideText }: Props) {
 
     await connectAsync({
       connector: viemClientWalletConnector({
-        walletClient: viemClientWallet
-      })
+        walletClient: viemClientWallet,
+      }),
     });
   };
 
   if (isConnected && SHOW_THIRDWEB_WALLET) {
-    return (
-      <ConnectButton
-        client={CLIENT}
-        theme="light"
-        chain={CHAIN}
-      />
-    )
+    return <ConnectButton client={CLIENT} theme="light" chain={CHAIN} />;
   }
 
   return (
-    <div className="flex flex-col gap-2 text-center justify-center items-center">
+    <div className="flex flex-col items-center justify-center gap-2 text-center">
       <div className="flex items-center gap-2">
         <Wallet>
           <ConnectWallet
-            className={`px-4 py-2 ${connectButtonTextSize} font-bold text-white ${connectButtonColor} rounded-md flex items-center gap-2 ${btnClassName}`}
+            className={`px-4 py-2 ${connectButtonTextSize} font-bold text-white ${connectButtonColor} flex items-center gap-2 rounded-md ${btnClassName}`}
           >
             <ConnectWalletText>
-              <span>Create a Wallet</span>
+              <span>Create Wallet</span>
             </ConnectWalletText>
             <Avatar className="h-6 w-6" />
             <Name />
           </ConnectWallet>
           <WalletDropdown className="z-20">
-            <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+            <Identity className="px-4 pb-2 pt-3" hasCopyAddressOnClick>
               <Avatar />
               <Name />
               <Address className={color.foregroundMuted} />
@@ -132,15 +134,13 @@ export function WalletComponents({ btnClassName, hideText }: Props) {
         </Wallet>
         <ConnectButton
           client={CLIENT}
-          recommendedWallets={[
-            createWallet("com.coinbase.wallet"),
-          ]}
+          recommendedWallets={[createWallet("com.coinbase.wallet")]}
           onConnect={handleThirdwebConnect}
           wallets={[
             createWallet("io.metamask"),
             createWallet("com.coinbase.wallet"),
             createWallet("me.rainbow"),
-            createWallet("walletConnect")
+            createWallet("walletConnect"),
           ]}
           chain={CHAIN}
           connectButton={{
@@ -155,25 +155,28 @@ export function WalletComponents({ btnClassName, hideText }: Props) {
         />
       </div>
       {!isConnected && !hideText && (
-        <p className="text-center text-gray-600 max-w-xs text-sm">
+        <p className="max-w-xs text-center text-sm text-gray-600">
           Create a wallet with
-          <span className="font-bold mx-1">
+          <span className="mx-1 font-bold">
             <Image
               src="/images/faceid.svg"
               className="inline h-4 w-4"
               alt="Face ID"
               width={16}
               height={16}
-            /> Face ID
-          </span>or
-          <span className="font-bold mx-1">
+            />{" "}
+            Face ID
+          </span>
+          or
+          <span className="mx-1 font-bold">
             <Image
               src="/images/touchid.svg"
               className="inline h-4 w-4"
               alt="Touch ID"
               width={16}
               height={16}
-            /> Touch ID
+            />{" "}
+            Touch ID
           </span>
         </p>
       )}
