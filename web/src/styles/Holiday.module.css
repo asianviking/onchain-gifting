@@ -1,65 +1,51 @@
-.content {
-  position: relative;
-  width: 100%; /* Scale with screen size */
-  max-width: 500px; /* Limit the maximum size */
-  height: auto;
-  aspect-ratio: 2 / 1; /* Maintain proportional dimensions for arc */
-  margin: 2rem auto; /* Center on the page */
-}
 
-.card {
-  position: absolute;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform-origin: center;
-  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-150px); /* Arc arrangement */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 15vw; /* Responsive width */
-  max-width: 120px; /* Limit size for larger screens */
-  padding: 10px;
-}
-
-.card p {
-  margin: 10px 0;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.card span {
-  font-size: 0.9rem;
-  color: #888;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
+  .content {
+    position: relative;
+    width: 400px; /* Set a container width */
+    height: 200px; /* Set a container height */
+    /* margin: 5rem; */
+  }
+  
   .card {
-    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-100px); /* Adjust arc radius */
-    width: 20vw; /* Adjust size for smaller screens */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform-origin: bottom center; /* Rotate from the bottom center */
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-180px);
   }
-
-  .card p {
-    font-size: 0.9rem;
+  
+  /* Example angles for 3 items */
+  .card:nth-child(1) {
+    --angle: -30deg;
   }
-
-  .card span {
-    font-size: 0.8rem;
+  .card:nth-child(2) {
+    --angle: 0deg;
   }
-}
-
-@media (max-width: 480px) {
+  .card:nth-child(3) {
+    --angle: 30deg;
+  }
+  
+  
   .card {
-    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-80px); /* Adjust for mobile */
-    width: 25vw; /* Increase size for readability */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background: #fff; */
+    /* border-radius: 10px; */
+    padding: 20px;
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+    width: 150px;
   }
-
+  
   .card p {
-    font-size: 0.8rem;
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
   }
-
+  
   .card span {
-    font-size: 0.7rem;
+    font-size: 14px;
+    color: #888;
   }
-}
+  

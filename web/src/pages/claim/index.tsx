@@ -81,102 +81,89 @@ export default function Claim() {
   return (
     //What I was trying to do
 
-  //   <div className="flex flex-col gap-2 justify-center items-center mt-[3rem] w-fit mx-auto" >
-  //     <div className="flex gap-4 w-fit h-fit  object-contain" style={{position:"fixed", top:"0", left:"12%", zIndex:"4"}}>
-  //       <Image
-  //         src="/images/ornament4.png"
-  //         alt="Left Ornament"
-  //         fill={false}
-  //         width={90}
-  //         height={90}
-  //         className="object-contain absolute top-0 -ml-[4rem]"
-  //       />
-  //       <Image
-  //         src="/images/ornament1.png"
-  //         alt="Left Ornament"
-  //         width={90}
-  //         height={90}
+    <div className="flex flex-col gap-2 justify-center items-center mt-[3rem] w-fit mx-auto" >
+      <div className="flex gap-4 w-fit h-fit  object-contain" style={{position:"fixed", top:"0", left:"12%", zIndex:"4"}}>
+        <Image
+          src="/images/ornament4.png"
+          alt="Left Ornament"
+          fill={false}
+          width={90}
+          height={90}
+          className="object-contain absolute top-0 -ml-[4rem]"
+        />
+        <Image
+          src="/images/ornament1.png"
+          alt="Left Ornament"
+          width={90}
+          height={90}
           
-  //       />
-  //     </div>
-  //     <div className="flex gap-4 w-fit h-fit  object-contain" style={{position:"fixed", top:"0", right:"12%", zIndex:"4"}}>
-  //       <Image
-  //         src="/images/ornament2.png"
-  //         alt="Right Ornament"
-  //         width={90}
-  //         height={90}
+        />
+      </div>
+      <div className="flex gap-4 w-fit h-fit  object-contain" style={{position:"fixed", top:"0", right:"12%", zIndex:"4"}}>
+        <Image
+          src="/images/ornament2.png"
+          alt="Right Ornament"
+          width={90}
+          height={90}
           
-  //       />
-  //       <Image
-  //         src="/images/ornament3.png"
-  //         alt="Right Ornament"
-  //         fill={false}
-  //         width={90}
-  //         height={90}
-  //         className="object-contain absolute top-0 ml-[4rem]"
-  //       />
-  //     </div>
-  //   <div className={styles.content}>
-  //     <div className={styles.card} style={{
-  //         "--angle": "-30deg",
-  //         transform: "translate(-50%, -50%) rotate(var(--angle)) translateY(-150px)",
-  //         } as React.CSSProperties}
-  //     >
-  //       <Image src="/images/usdc-big.png" alt="USDC Icon" width={300} height={300} />
-  //       <p>USDC</p>
-  //       <h6 className="text-black font-[100] ">$23.98</h6>
-  //     </div>
-  //     <div className={styles.card} style={{
-  //         "--angle": "0deg",
-  //         transform: "translate(-50%, -50%) rotate(var(--angle)) translateY(-150px)",
-  //       } as React.CSSProperties}
-  //     >
-  //       <Image src="/images/BASE_GLOBAL_BLUE.gif" alt="Holiday Collectible" width={300} height={300} className="rounded-lg mx-[5rem] bg-red-600" />
-  //       <p>Holiday Collectible</p>
-  //     </div>
-  //     <div className={styles.card}
-  //     style={{
-  //       "--angle": "30deg",
-  //       transform: "translate(-50%, -50%) rotate(var(--angle)) translateY(-150px)",
-  //       } as React.CSSProperties}
-  //     >
-  //       <Image src="/images/basename-big.png" alt="Basename Icon" width={300} height={300} />
-  //       <p>Basename</p>
-  //     </div>
-  //   </div>
+        />
+        <Image
+          src="/images/ornament3.png"
+          alt="Right Ornament"
+          fill={false}
+          width={90}
+          height={90}
+          className="object-contain absolute top-0 ml-[4rem]"
+        />
+      </div>
+    <div className={styles.content}>
+      <div className={styles.card}>
+        <Image src="/images/usdc-big.png" alt="USDC Icon" width={300} height={300} />
+        <p>USDC</p>
+        <h6 className="text-black font-[100] ">$23.98</h6>
+      </div>
+      <div className={styles.card} >
+        <Image src="/images/BASE_GLOBAL_BLUE.gif" alt="Holiday Collectible" width={300} height={300} className="rounded-lg mx-[5rem] bg-red-600" />
+        <p>Holiday Collectible</p>
+      </div>
+      <div className={styles.card}>
+        <Image src="/images/basename-big.png" alt="Basename Icon" width={300} height={300} />
+        <p>Basename</p>
+      </div>
+    </div>
 
-  //     <div className="max-[966px]:w-[90%] w-[50%] mx-auto text-center">
-  //       <h1 className="font-bold text-[24px]">Happy New Year</h1>
+      <div className="max-[966px]:w-[90%] w-[50%] mx-auto text-center">
+        <h1 className="font-bold text-[24px]">Happy New Year</h1>
 
-  //       <p className="mt-3">Congratulations on receiving your holiday gift!</p>
+        <p className="mt-3">Congratulations on receiving your holiday gift!</p>
 
-  //       <p className="mt-5">
-  //         You’ve just joined the Base ecosystem, a community-driven platform
-  //         where your journey into the world of decentralized finance begins.
-  //       </p>
+        <p className="mt-5">
+          You’ve just joined the Base ecosystem, a community-driven platform
+          where your journey into the world of decentralized finance begins.
+        </p>
 
-  //       <button className="mt-8 bg-[#2455FF] text-white px-5 py-2 text-[17px] rounded-full">Claim New Year NFT</button>
-  //     </div>
-  // </div>
+        <button className="mt-8 bg-[#2455FF] text-white px-5 py-2 text-[17px] rounded-full">Claim New Year NFT</button>
+      </div>
+  </div>
 
     //New first claim flow
 
-    <section className="flex flex-col gap-2 justify-center items-center mt-6 w-full">
-      <div className="max-[966px]:w-[80%] w-[40%] align-middle justify-center bg-[#d0daff] blur-[20] rounded-[12px] p-[40px] flex flex-col border-white border">
-        <p className="w-fit mx-auto">
-          <Image
-            src="/images/gift.png"
-            alt="gift"
-            width={200}
-            height={200}
-          />
-        </p>
+    // <section className="flex flex-col gap-2 justify-center items-center mt-6 w-full">
+    //   <div className="max-[966px]:w-[80%] w-[40%] align-middle justify-center bg-[#d0daff] blur-[20] rounded-[12px] p-[40px] flex flex-col border-white border">
+    //     <p className="w-fit mx-auto">
+    //       <Image
+    //         src="/images/gift.png"
+    //         alt="gift"
+    //         width={200}
+    //         height={200}
+    //       />
+    //     </p>
 
-        <h1 className="w-fit mx-auto mt-10">You’ve recieved a gift!</h1>
+    //     <h1 className="w-fit mx-auto mt-10">You’ve recieved a gift!</h1>
 
-        <button className="w-full rounded-full bg-[#2455FF] text-white py-2 mt-3 cursor-pointer">Claim Your Gift</button>
-      </div>
-    </section>
+    //     <button className="w-full rounded-full bg-[#2455FF] text-white py-2 mt-3 cursor-pointer">Claim Your Gift</button>
+    //   </div>
+    // </section>
 
     //Old
 
