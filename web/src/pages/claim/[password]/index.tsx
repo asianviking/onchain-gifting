@@ -158,10 +158,7 @@ export default function Claim() {
                         Create a wallet in seconds via Face ID or Touch ID
                       </p>
                       <div className="flex">
-                        <WalletComponents
-                          btnClassName="my-2 backdrop-blur-sm animate-[pulse-shadow_3s_ease-in-out_infinite]"
-                          hideText={true}
-                        />
+                        <WalletComponents btnClassName="my-2 backdrop-blur-sm animate-[pulse-shadow_3s_ease-in-out_infinite]" />
                       </div>
                     </div>
                   </div>

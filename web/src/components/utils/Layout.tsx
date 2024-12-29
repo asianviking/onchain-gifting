@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useAccount } from "wagmi";
 import { WalletComponents } from "./WalletComponents";
 import { Toaster } from "../ui/toaster";
+import Navbar from "../Navbar";
 
 const Frame = dynamic(() => import("~/components/utils/Frame"), {
   ssr: false,
@@ -19,25 +20,25 @@ const ConfettiAnimation = dynamic(
 export function Layout({ children }: { children: React.ReactNode }) {
   const { address } = useAccount();
   return (
-    <main className="flex min-h-screen w-full flex-col items-center bg-gradient-to-br from-white to-blue-500 p-4 sm:px-20 sm:pb-20 sm:pt-10">
-      <div className="absolute left-0 top-10 h-full w-full">
+    <main className="flex min-h-screen md:h-screen w-full flex-col items-center bg-gradient-to-br from-white to-blue-500 p-4 sm:px-20 sm:pb-20 sm:pt-10">
+      <div
+        style={{
+          backgroundImage: "url(/images/bokeh-effect.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+        className="absolute left-0 top-0 z-10 h-full w-full"
+      />
+      <div className="absolute left-0 top-10 z-20 h-[80%] w-full">
         <ConfettiAnimation />
       </div>
-      <div className="z-10 flex h-20 w-full items-center justify-between">
-        <Link href="/">
-          <Image
-            src="/images/base-logo.png"
-            alt="Logo"
-            width={32}
-            height={32}
-            priority
-          />
-        </Link>
-        <WalletComponents />
+      <Navbar />
+      <div className="z-20">
+        {children}
+        <Toaster />
+        <Frame />
       </div>
-      {children}
-      <Toaster />
-      <Frame />
     </main>
   );
 }
