@@ -11,15 +11,15 @@ import {
   ConnectWalletText,
   Wallet,
   WalletDropdown,
-  WalletDropdownBasename, 
+  WalletDropdownBasename,
   WalletDropdownDisconnect,
   WalletDropdownFundLink,
   WalletDropdownLink,
 } from '@coinbase/onchainkit/wallet';
 import { createWallet, createWalletAdapter, type Wallet as ThirdwebWallet } from "thirdweb/wallets";
-import { 
-  ConnectButton, 
-  useSetActiveWallet 
+import {
+  ConnectButton,
+  useSetActiveWallet
 } from "thirdweb/react";
 import { useAccount, useDisconnect, useWalletClient, useSwitchChain } from "wagmi";
 import { viemAdapter } from "thirdweb/adapters/viem";
@@ -80,8 +80,8 @@ export function WalletComponents({ btnClassName, hideText }: Props) {
       chain: CHAIN,
       account: wallet.getAccount()!,
     });
-    
-    await connectAsync({ 
+
+    await connectAsync({
       connector: viemClientWalletConnector({
         walletClient: viemClientWallet
       })
@@ -90,8 +90,8 @@ export function WalletComponents({ btnClassName, hideText }: Props) {
 
   if (isConnected && SHOW_THIRDWEB_WALLET) {
     return (
-      <ConnectButton 
-        client={CLIENT} 
+      <ConnectButton
+        client={CLIENT}
         theme="light"
         chain={CHAIN}
       />
@@ -126,7 +126,7 @@ export function WalletComponents({ btnClassName, hideText }: Props) {
               rel="noopener noreferrer"
             >
               View Funds
-            </WalletDropdownLink> 
+            </WalletDropdownLink>
             <WalletDropdownDisconnect />
           </WalletDropdown>
         </Wallet>
@@ -144,7 +144,7 @@ export function WalletComponents({ btnClassName, hideText }: Props) {
           ]}
           chain={CHAIN}
           connectButton={{
-            label: "Connect a Wallet",
+            label: "Connect",
             className: `!px-4 !py-2 !h-auto !text-lg !rounded-md ${connectButtonTextSize} !min-w-0 hover:bg-gray-300 !font-bold rounded-md flex items-center gap-2 ${btnClassName}`,
           }}
           connectModal={{
@@ -156,24 +156,24 @@ export function WalletComponents({ btnClassName, hideText }: Props) {
       </div>
       {!isConnected && !hideText && (
         <p className="text-center text-gray-600 max-w-xs text-sm">
-          Create a wallet with 
+          Create a wallet with
           <span className="font-bold mx-1">
-            <Image 
-              src="/images/faceid.svg" 
-              className="inline h-4 w-4" 
-              alt="Face ID" 
+            <Image
+              src="/images/faceid.svg"
+              className="inline h-4 w-4"
+              alt="Face ID"
               width={16}
               height={16}
-            /> Face ID 
-          </span>or 
+            /> Face ID
+          </span>or
           <span className="font-bold mx-1">
-            <Image 
-              src="/images/touchid.svg" 
-              className="inline h-4 w-4" 
-              alt="Touch ID" 
+            <Image
+              src="/images/touchid.svg"
+              className="inline h-4 w-4"
+              alt="Touch ID"
               width={16}
               height={16}
-            /> Touch ID 
+            /> Touch ID
           </span>
         </p>
       )}
