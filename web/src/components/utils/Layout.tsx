@@ -20,7 +20,7 @@ const ConfettiAnimation = dynamic(
 export function Layout({ children }: { children: React.ReactNode }) {
   const { address } = useAccount();
   return (
-    <main className="flex min-h-screen w-full flex-col items-center bg-gradient-to-br from-white to-blue-500 p-4 sm:px-20 sm:pb-20 sm:pt-10">
+    <main className="flex min-h-screen md:h-screen w-full flex-col items-center bg-gradient-to-br from-white to-blue-500 p-4 sm:px-20 sm:pb-20 sm:pt-10">
       <div
         style={{
           backgroundImage: "url(/images/bokeh-effect.png)",
@@ -30,7 +30,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         }}
         className="absolute left-0 top-0 z-10 h-full w-full"
       />
-      <div className="absolute left-0 top-10 z-20 h-[90%] w-full">
+      <div className="absolute left-0 top-10 z-20 h-[80%] w-full">
         <ConfettiAnimation />
       </div>
       <Navbar />
