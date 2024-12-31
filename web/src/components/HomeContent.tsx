@@ -19,9 +19,8 @@ import { Label } from "~/components/ui/label";
 export default function HomeContent() {
   return (
     <>
-      <h1 className="-mt-10 md:w-[80%] text-center text-[48px] font-extrabold leading-tight text-white md:text-[96px]">
-        Bring Them <span className="text-blue-600">Onchain</span> This New
-        Year!
+      <h1 className="-mt-10 text-center text-[48px] font-extrabold leading-tight text-white md:w-[80%] md:text-[96px]">
+        Bring Them <span className="text-blue-600">Onchain</span> This New Year!
       </h1>
       <div className="my-5 flex items-center justify-center gap-4">
         <ClaimPasswordInputDialog />
@@ -51,9 +50,9 @@ const ClaimPasswordInputDialog = () => {
           Claim Gift
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="w-full md:max-w-screen-sm">
         <form
-          className="w-full max-w-sm"
+          className="w-full"
           onSubmit={(e) => {
             e.preventDefault();
             const form = e.target as HTMLFormElement;
@@ -64,21 +63,42 @@ const ClaimPasswordInputDialog = () => {
           }}
         >
           <DialogHeader>
-            <DialogTitle>Claim Gift</DialogTitle>
-            <DialogDescription>
-                Enter the secret phrase to claim your gift
+            <DialogTitle>Claim your gift</DialogTitle>
+            <DialogDescription className="flex flex-col gap-2">
+              <p className="text-sm">
+                Your friend sent your gift? Enter the secret phrase and start
+                your onchain journey!
+              </p>
+              <div className="flex flex-col gap-1">
+                <p className="text-sm">Here’s how it works: </p>
+                <ul className="ml-4 list-disc">
+                  <li>
+                    Type in the secret phrase (your friend’s New Year’s
+                    resolution) to unlock the package.
+                  </li>
+                  <li>
+                    Once the package is unlocked, you’ll be prompted to create a
+                    wallet if you don’t already have one. Don’t worry—it’s
+                    quick, easy, and completely free!
+                  </li>
+                  <li>
+                    Claim your gift of 5 USDC (equal to $5) along with a special
+                    Basename created just for you!
+                  </li>
+                </ul>
+              </div>
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4 w-full py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
+          <div className="w-full gap-4 py-4">
+            <div className="items-center gap-4">
               <Label htmlFor="password" className="text-right text-xs">
                 Secret Phrase
               </Label>
-              <Input
-                id="password"
-                name="password"
-                className="col-span-3"
-              />
+              <Input id="password" name="password" className="col-span-3" />
+              <p className="ml-1 mt-2 text-xs text-red-500">
+                Important: The secret phrase is unique to your gift, so keep it
+                safe and only use it to unlock this package.
+              </p>
             </div>
           </div>
           <DialogFooter>
@@ -93,5 +113,4 @@ const ClaimPasswordInputDialog = () => {
       </DialogContent>
     </Dialog>
   );
-}
-
+};

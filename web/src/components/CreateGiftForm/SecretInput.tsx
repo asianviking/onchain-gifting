@@ -47,7 +47,7 @@ export function InputSecret() {
     }
   }, [debouncedPassword, updatePassword]);
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex max-w-[512px] w-full flex-col gap-2">
       <Label>New Year&apos;s Resolution</Label>
       <Input
         type="text"
@@ -62,9 +62,13 @@ export function InputSecret() {
             setHasSeenToast(true);
           }
         }}
-        className="flex w-full items-center gap-x-3 rounded-lg bg-white p-3"
+        className="flex w-full  items-center gap-x-3 rounded-lg bg-white p-3"
         placeholder="My new year's resolution for 2025 is..."
       />
+       <p className="text-xs px-1 text-red-500">
+        Do not share your gift link or your New Year&apos;s resolution
+        publicly. Anyone with this information can claim your gift!
+      </p>
       {showError && (
         <p className="mt-1 text-sm text-red-500 opacity-90">{errorMessage}</p>
       )}
