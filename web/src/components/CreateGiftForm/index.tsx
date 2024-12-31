@@ -30,6 +30,7 @@ import { InputSecret } from "./SecretInput";
 import { InputResolution } from "./ResolutionInput";
 import { CreateGiftPack } from "../CreateGiftPack";
 import { CreateGiftPackButton } from "../CreateGiftPackButton";
+import { useModal } from "~/store/modals";
 
 type Props = {
   erc20s: { token: string; amount: string }[];
@@ -96,6 +97,7 @@ export function CreateGiftForm() {
     },
   );
   const [isCreated, setIsCreated] = useState(false);
+  const { setCreateGiftDialogOpen } = useModal();
 
   const handleOnStatus = useCallback((status: LifecycleStatus) => {
     if (status.statusName === "success") {
@@ -276,6 +278,9 @@ export function CreateGiftForm() {
       <InputUSDC />
       <InputSecret />
       <BaseNameSelector baseNameNfts={baseNameNfts} />
+      <div onClick={() => setCreateGiftDialogOpen(true)} className="ml-1 text-sm text-blue-500 cursor-pointer underline">
+        How to send a gift
+      </div>
       {/* <Transaction calls={calls} isSponsored>
         <TransactionButton
           disabled={isPending || !address}

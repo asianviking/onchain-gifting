@@ -63,15 +63,17 @@ export function BaseNameSelector({
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm font-medium">Basename</label>
+    <div className="flex flex-col gap-2 w-full md:max-w-[512px]">
+      <label className="text-sm font-medium">
+        Select Basename to send to your friend
+      </label>
       <Popover>
         <PopoverTrigger asChild>
           <Button
             variant="outline"
             role="combobox"
             className={cn(
-              "h-[60px] md:w-[512px] justify-between",
+              "h-[60px] justify-between md:w-[512px]",
               !selectedBaseName && "text-muted-foreground",
             )}
           >
@@ -91,7 +93,11 @@ export function BaseNameSelector({
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[300px] sm:w-full md:w-[512px] p-0">
+        <p className="text-xs text-red-500 ml-1">
+          Pick the basename you created for your friend from the dropdown menu.
+          Do not send your own basename!
+        </p>
+        <PopoverContent className="w-[300px] p-0 sm:w-full md:w-[512px]">
           <Command>
             <CommandInput placeholder="Search basename..." className="h-9" />
             <CommandList>
